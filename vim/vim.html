@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Kurs Praktyczna Administracja - Edytor Vim! - Łukasz Bartnicki - Udemy</title>
+	<style>
+	body {
+		    background-color: #D3D3D3;
+	}
+	kbd {
+		background-color: PaleGoldenRod;
+	}
+	.error {
+		color: white;
+		background-color: red;
+		font-family: monospace;
+	}
+	</style>
+</head>
+<body>
+	<h1>1. Wstęp</h1>
+		<h2>1.1. Wstęp</h2>
+		<p>
+			Najpopularniejsz edytor tekstowy wśród czytelników <em>Linux Journal</em>, używany regularnie przez administratorów i programistów.
+		</p>
+		<p>
+			Umożliwia: szybkie i sprawne edytowanie plików tekstowych z poziomu terminala i przy pomocy klawiatury.
+		</p>
+		<p>
+			Grupa wsparcia na Facebooku: <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/groups/356275395543025">Administratorzy Baz Danych - nauka i pomoc</a>.
+		</p>
+		<h2>1.2. Dlaczego Vim?</h2>
+		<p>
+			Vim - jest rozwinięciem edytora <strong>Vi</strong>, która dodaje nowe funkcjonalności i pozwala w bardziej przystępny sposób edytować pliki tekstowe. Jego cechy to:
+		</p>
+		<ul>
+			<li>Open-Source - darmowy, bez licencji.</li>
+			<li>Wieloplatformowy. Zainstalowany na każdym systemie Unix i Linux.</li>
+			<li>Bardzo wydajny - ze względu na przetwarzanie tekstu jak i wydajność pracy.</li>
+			<li>Nie wymaga użycia myszki. Szybkie skróty klawiaturowe. Dobrze przemyślana klawiszologia.</li>
+			<li>Rozwijany cały czas od 1991.</li>
+			<li>Podświetla i koloruje składnie (nowa funkcjonalość w stostunku do Vi).</li>
+			<li>Proste do zapamiętania polecenia. Komendy układają się w przejrzyste schematy. Wbudowana dokumentacja.</li>
+		</ul>
+	<h1>2. Poznaj kluczowe operacje w edytorze Vim!</h1>
+		<h2>2.1. Tryb pracy edytora</h2>
+		<ul>Główne:
+			<li><strong>Normal/Command Mode</strong> &mdash; tryb normalny. Dostępny zaraz po uruchomieniu. Tryb sterowania, komend i poleceń.</li>
+			<li><strong>Insert Mode</strong> &mdash; tryb wpisywania. Tryb edytowania.</li>
+			<li><strong>Command-Line Mode</strong> &mdash; tryb liniowy. Tryb komend po dwukropku związany z komunikacją z systemem (zapisywanie itp.)</li>
+			Inne:
+			<li><strong>Visual Mode</strong> &mdash; tryb wizualny. Pozwala zaznaczać za pomocą myszki.</li>
+			<li><strong>Replace Mode</strong> &mdash; tryb podmiany tekstu.</li>
+			<li>&hellip;</li>
+		</ul>
+		<h2>2.2. Włączanie, wyłączanie edytora i zapisywanie plików</h2>
+		<p>
+			<strong>vi</strong> to <em>alias</em> do <strong>vim</strong> utowrzony na poziomie sesji użytkownika. Oba polecenia uruchamiają Vim'a.
+		</p>
+		<p>
+			<kbd>:q</kbd> &mdash; wyjście z vima, jeśli nie było zmian.
+			Po wprowadzeniu zmian ta komenda wywołuje <b class="error">E37: No write since last change (add ! to override)</b>.
+		</p>
+		<p>
+			<kbd>$ vi plik</kbd> &mdash; otwiera plik o nazwie <em>plik</em> lub tworzy go jeśli nie istnieje (ale dopiero w momencie zapisu &ndash;
+			wyjście z vima bez żadnych zmian nie tworzy tak otwartego pliku). Na dole paska pojawia się informacja <code>"plik" [New File]</code>.
+		</p>
+		<p>
+			<kbd>i</kbd> &mdash; wejście w tryb <em>Insert mode</em>.
+		</p>
+		<p>
+			<kbd>ESC</kbd> &mdash; wyjście z aktualnego trybu do <em>Command Mode</em>.
+		</p>
+		<p>
+			<kbd>:q!</kbd> &mdash; wyjście bez zapisywania wprowadzonych zmian.
+		</p>
+		<p>
+			<kbd>:w</kbd> &mdash; zapis zmian w pliku. Na dole paska pojawia się informacja: nazwa, ilość linii, ilość znaków, <em>written</em>.
+			Jeśli jest to nowy plik to dodatkowo pojawia się informacja <code>"plik" [New] 1L, 15C written</code>.
+		</p>
+		<p>
+			<kbd>:wq</kbd> &mdash; łączona komenda <em>zapisz i wyjdź</em>.
+		</p>
+		<h2>2.4. Ćwiczenie praktyczne 01 - Rozwiązanie</h2>
+		<p>
+			<ol>
+				<li><kbd>$ cd folder</kbd> # enter to any folder</li>
+				<li><kbd>$ vim cwprakt01.txt</kbd> # create a file and enter into vim</li>
+				<li><kbd>i<kbd> # lunch <em>insert mode</em></li>
+				<li><kbd>abc...</kbd> # insert any text</li>
+				<li><kbd>ESC</kbd> # escape into <em>command mode</em></li>
+				<li><kbd>:w</kbd> # save file</li>
+				<li><kbd>:q</kbd> # quit vim</li>
+				<li><kbd>$ ls -alh cwprakt01.txt</kbd> # check file existing</li>
+				<li><kbd>$ cat cwprakt01.txt</kbd> # check the content</li>
+			</ol>
+		</p>
+	<h1>3. Dowiedz się jak nawigować po plikach</h1>
+		<h2>3.1. Nawigacja w tekście - koncepcje</h2>
+		<img style="width: 50%; float: left; margin-right: 20px; margin-bottom: 30px;" src="media/navigate.png" alt="Nawigowanie po tekście.">
+		<p>
+			<kbd>h, j, k, l</kbd> &mdash; znak w: lewo, dół, góra, prawo. W nowych systemach działają też strzałki.
+		</p>
+		<p>
+			<kbd>b, w</kbd> &mdash; słowo w tył, słowo w przód.
+		</p>
+		<p>
+			<kbd>SHIFT-b, SHIFT-w</kbd> &mdash; jak wyżej; ignoruj znaki interpunkcyjne.
+		</p>
+		<p>
+			<kbd>z, ENTER</kbd> &mdash; centruj.
+		</p>
+		<p>
+			<kbd>CTRL-b, CTRL-f</kbd> &mdash; strona do góry, strona do dołu (<em>PgUp</em>, <em>PgDown</em>).
+		</p>
+		<p>
+			<kbd>0, ^, $</kbd> &mdash; skocz na: początek linii, początek pierwszego słowa, koniec linii.
+		</p>
+		<h2 style="clear: left;">3.2. Nawigacja w tekście po znakach, wierszach i stronach w praktyce!</h2>
+		<p>
+			<strong>~</strong> &mdash; tyldy w edytorze na końcu pliku oznaczają, że te linie nie posiadają żadnych znaków.
+		</p>
+		<p>
+			<kbd>gg, 1gg</kbd> &mdash; skok na początek pliku.
+		</p>
+		<p>
+			<kbd>SHIFT-g</kbd> &mdash; skok na koniec pliku.
+		</p>
+		<p>
+			<kbd>3gg, 3SHIFT-g, :3</kbd> &mdash; skok do np. 3 linijki.
+		</p>
+		<p>
+			<kbd>12w, 5b, 4SHIFT-w, 7SHIFT-b</kbd> &mdash; 12 słów do przodu, 5 słów do tyłu oraz ignorując znaki interpunkcyjne
+			4 słowa do przodu i 7 słów do tyłu.
+		</p>
+</body>
+</html>
+
