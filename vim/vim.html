@@ -118,10 +118,11 @@
 		</p>
 		<h2 style="clear: left;">3.2. Nawigacja w tekście po znakach, wierszach i stronach w praktyce!</h2>
 		<p>
-			<strong>~</strong> &mdash; tyldy w edytorze na końcu pliku oznaczają, że te linie nie posiadają żadnych znaków.
+			<strong>~</strong> &mdash; tyldy w edytorze na końcu pliku oznaczają, że te linie nie posiadają żadnych znaków,
+			jest to obszar końca pliku.
 		</p>
 		<p>
-			<kbd>gg, 1gg</kbd> &mdash; skok na początek pliku.
+			<kbd>gg, 0gg, 1gg, :0, :1</kbd> &mdash; skok na początek pliku.
 		</p>
 		<p>
 			<kbd>SHIFT-g</kbd> &mdash; skok na koniec pliku.
@@ -132,6 +133,144 @@
 		<p>
 			<kbd>12w, 5b, 4SHIFT-w, 7SHIFT-b</kbd> &mdash; 12 słów do przodu, 5 słów do tyłu oraz ignorując znaki interpunkcyjne
 			4 słowa do przodu i 7 słów do tyłu.
+		</p>
+		<h2>3.4. Ćwiczenie praktyczne 02 - Rozwiązanie</h2>
+		<p>
+			<ol>
+				Otwarcie pliku:
+				<li><kbd>$ cd folder</kbd> # enter to any folder</li>
+				<li><kbd>$ vim sshd_config_sample.txt</kbd> # open the file</li>
+				Poruszanie się po znakach:
+				<li><kbd>h, j, k, l<kbd> # move across characters</li>
+				Poruszanie się po słowach:
+				<li><kbd>j, w, b, h</kbd> # move down the line, move right, back and at the beginning of the line</li>
+				<li><kbd>SHIFT-b, SHIFT-w</kbd> # move across the real words</li>
+				Poruszanie się po stronach:
+				<li><kbd>CTRL-f, CTRL-b</kbd> # PgDwn, PgUp</li>
+				Poruszanie się po linii:
+				<li><kbd>0, $</kbd> # move to the end and at the beginning of the line</li>
+				Poruszanie się po liniach:
+				<li><kbd>SHIFT-g</kbd> # move to the end of the file</li>
+				<li><kbd>gg</kbd> # move at the beginning  of the file</li>
+				<li><kbd>:12</kbd> # move to the 12 line</li>
+			</ol>
+		</p>
+	<h1>4. Usuwaj i kopiuj tekst na wiele sposobów</h1>
+		<h2>4.1. Usuwanie różnych kawałków tekstu - koncepcja [count]{operation} motion</h2>
+		<p>
+			<strong>[count]{operation}motion,</strong> lub <strong>{operation}[count]motion</strong> &mdash; koncepcja łączenia komend i ich powtarzalność.
+		</p>
+		<p>
+			Vim został zaprojektowany tak, aby skróty klawiaturowe układały się w angielskie polecenia, np. <kbd>2dw</kbd> &ndash;
+			<em lang="en">two delete words</em> = <em lang="pl">usuń dwa słowa</em>.
+		</p>
+		<p>
+			Położenie kursora na znaku oznacza, że tak na prawdę jest on przed znakiem.
+		</p>
+		<p>
+			<kbd>d</kbd> &mdash; (<em lang="en">delete</em>) <u>operation</u> usuwanie.
+		</p>
+		<p>
+			<kbd>w</kbd> &mdash; (<em lang="en">word</em>) <u>motion</u> słowo.
+		</p>
+		<img style="width: 50%; float: left; margin-right: 20px; margin-bottom: 30px;" src="media/delete.png" alt="Usuwanie tekstu.">
+		<p>
+			<kbd>dw, 2dw, d2w</kbd> &mdash; usuń słowo, usuń dwa słowa.
+		</p>
+		<p>
+			<kbd>dh, 3dh</kbd> &mdash; usuwanie znaku/ów po lewo.
+		</p>
+		<p>
+			<kbd>dl, x, 1dl, x, 1x</kbd> &mdash; usuwanie znaku/ów po prawo oraz skrót do tego.
+		</p>
+		<p>
+			<kbd>dk, 5dk</kbd> &mdash; usuwanie lini aktualnej i jednej wyżej lub aktualnej i 5 wyżej.
+		</p>
+		<p>
+			<kbd>dj, 5dj</kbd> &mdash; usuwanie lini aktualnej i jednej niżej lub aktualnej i 5 niżej.
+		</p>
+		<p>
+			<kbd>d0</kbd> &mdash; usuwa tekst do początku linii.
+		</p>
+		<p>
+			<kbd>d$, SHIFT-d</kbd> &mdash; usuwa tekst do końca linii.
+		</p>
+		<p style="clear: left;">
+			Kolejna koncepcja pojawiająca się Vimie, to <u>wciśnięcie dwa razy operatora dotyczy całej linii</u>.
+		</p>
+		<p>
+			<kbd>dd, 5dd, d5d</kbd> &mdash; usuń jedną linię, usuń 5 linii.
+		</p>
+		<p>
+			<kbd>.</kbd> &mdash; kropka powtarza ostatnią operację.
+		</p>
+		<h2>4.3. Ćwiczenie praktyczne 03 - Rozwiązanie</h2>
+		<ol>
+			Otwieranie pliku:
+			<li><kbd>vim sshd_config_sample.txt</kbd> # open a sample file</li>
+			Usuwanie słów:
+			<li><kbd>j</kbd> # move over the characte</li>
+			<li><kbd>x</kbd> # delete the highlight character</li>
+			<li><kbd>l</kbd> # move to the first word</li>
+			<li><kbd>dw</kbd> # delete a word</li>
+			<li><kbd>x</kbd> # delete the sign after word</li>
+			Usuwanie do początku i końca linii:
+			<li><kbd>d$</kbd> # delete until the end of the line</li>
+			<li><kbd>d0</kbd> # delete until at the beginning of the line</li>
+			<li><kbd>x</kbd> # delete a left character</li>
+			Usuwanie linii:
+			<li><kbd>dd</kbd> # delete a line</li>
+			<li><kbd>2dd</kbd> # delete two lines</li>
+		</ol>
+	<h1>5. Kopiowanie tekstu i rejestry</h1>
+		<h2>5.1. Wycinanie i kopiowanie tekstu</h2>
+		<p>
+			<strong>Delete</strong> wycina tekst do schowka.<br>
+			<strong>Yank</strong> kopiuje tekst do schowka.<br>
+			<strong>Put</strong> wstawia tekst ze schowka za kursorem (jeśli jest to fragment) lub poniżej aktualnej linii
+			(jeśli jest to cała linia), lub z SHIFT'em przed kursorem (fragement) lub powyżej aktualnej linii (linia).
+		</p>
+		<img style="width: 50%; float: left; margin-right: 20px; margin-bottom: 30px;" src="media/copy.png" alt="Kopiowanie tekstu.">
+		<p>
+			<kbd>yy, 2yy, y2y</kbd> &mdash; kopiowanie linii oraz dwóch linii.
+		</p>
+		<p>
+			<kbd>y0, y$</kbd> &mdash; kopiowanie od aktualnego kursora do początku i końca linii.
+		</p>
+		<p>
+			<kbd>yh, yl, 2yh, y3l</kbd> &mdash; kopiowanie znaku/ów na lewo i prawo.
+		</p>
+		<p>
+			<kbd>yj, y2j, yk y3k</kbd> &mdash; kopiowanie linii aktualnej i powyżej (2 powyżej) oraz to samo w dół (3 linii).
+		</p>
+		<p>
+			<kbd>yw, y2w, 2yw, yb, y2b, 2yb</kbd> &mdash; kopiowanie słowa lub dwóch do przodu i do tyłu.
+		</p>
+		<p>
+			<kbd>p, SHIFT-p, 2p, 2SHIFT-p</kbd> &mdash; wklej za kursorem lub linią, przed kursorem lub linią, wklej dwa razy.
+		</p>
+		<h2 style="clear: left;">5.2. Rejestry</h2>
+		<p>
+			Schowki w Vimie to <b>rejestry</b>. 
+		</p>
+		<ul>
+			Rejestr default'owy:
+			<li><strong>""</strong> &mdash; do którego leci aktualnie kopiowany lub usuwany tekst.</li>
+			Rejestry liczbowe:
+			<li><strong>"0</strong> &mdash; rejest 0, do którego trafia tekst kopiowany, jest nadpisywany.</li>
+			<li><strong>"1 - "9</strong> &mdash; kolejka FIFO rejestrów przesuwnych do których trafiają kolejne teksty usuwane.<br>
+				Oznacza to, że Vim przechowuje historię ostatnich 9 usuwań co mocno zabezpiecza przed przypadkową utratą.<br>
+				Ostatni wypadający z kolejki znika na zawsze.</li>
+			Rejestry literowe:
+			<li><strong>"a - "z</strong> &mdash; rejestry w pełni zarządzane przez użytkownika.</li>
+		</ul>
+		<img style="width: 50%; float: left; margin-right: 20px; margin-bottom: 30px;" src="media/register.png" alt="Koncepcja rejestru.">
+		<p>
+			<kbd>:reg</kbd> &mdash; wyświetla listę rejestrów. Na liście mogą pojawić się również
+			<a href="https://en.wikipedia.org/wiki/ANSI_escape_code#Description" target="_blank">ANSI escape sequences</a>.
+		</p>
+		<p>
+			
 		</p>
 </body>
 </html>
