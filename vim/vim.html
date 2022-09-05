@@ -81,7 +81,7 @@
 		<p>
 			<kbd>:wq</kbd> &mdash; łączona komenda <em>zapisz i wyjdź</em>.
 		</p>
-		<h2>2.4. Ćwiczenie praktyczne 01 - Rozwiązanie</h2>
+		<h2>2.3. Ćwiczenie praktyczne 01 - Korzystanie z edytora Vim</h2>
 		<p>
 			<ol>
 				<li><kbd>$ cd folder</kbd> # enter to any folder</li>
@@ -134,7 +134,7 @@
 			<kbd>12w, 5b, 4SHIFT-w, 7SHIFT-b</kbd> &mdash; 12 słów do przodu, 5 słów do tyłu oraz ignorując znaki interpunkcyjne
 			4 słowa do przodu i 7 słów do tyłu.
 		</p>
-		<h2>3.4. Ćwiczenie praktyczne 02 - Rozwiązanie</h2>
+		<h2>3.3. Ćwiczenie praktyczne 02 - Nawigowanie w edytorze Vim</h2>
 		<p>
 			<ol>
 				Otwarcie pliku:
@@ -204,7 +204,7 @@
 		<p>
 			<kbd>.</kbd> &mdash; kropka powtarza ostatnią operację.
 		</p>
-		<h2>4.3. Ćwiczenie praktyczne 03 - Rozwiązanie</h2>
+		<h2>4.2. Ćwiczenie praktyczne 03 - Usuwanie tekstu</h2>
 		<ol>
 			Otwieranie pliku:
 			<li><kbd>vim sshd_config_sample.txt</kbd> # open a sample file</li>
@@ -255,22 +255,69 @@
 		</p>
 		<ul>
 			Rejestr default'owy:
-			<li><strong>""</strong> &mdash; do którego leci aktualnie kopiowany lub usuwany tekst.</li>
+			<li><strong>""</strong> &mdash; do którego leci aktualnie kopiowany lub usuwany tekst, gotowy do wklejenia.</li>
 			Rejestry liczbowe:
 			<li><strong>"0</strong> &mdash; rejest 0, do którego trafia tekst kopiowany, jest nadpisywany.</li>
 			<li><strong>"1 - "9</strong> &mdash; kolejka FIFO rejestrów przesuwnych do których trafiają kolejne teksty usuwane.<br>
 				Oznacza to, że Vim przechowuje historię ostatnich 9 usuwań co mocno zabezpiecza przed przypadkową utratą.<br>
 				Ostatni wypadający z kolejki znika na zawsze.</li>
 			Rejestry literowe:
-			<li><strong>"a - "z</strong> &mdash; rejestry w pełni zarządzane przez użytkownika.</li>
+			<li><strong>"a - "z</strong> &mdash; rejestry w pełni zarządzane przez użytkownika, który sam decyduje co i do jakiego rejestru trafi
+				i co i kiedy zostanie z niego wyciągnięte lub usunięte.<br>
+				Przy czym mała litera nadpisuja rejestr, duża litera dodaja do już istniejącej zawartości rejestru.
+			</li>
 		</ul>
 		<img style="width: 50%; float: left; margin-right: 20px; margin-bottom: 30px;" src="media/register.png" alt="Koncepcja rejestru.">
 		<p>
-			<kbd>:reg</kbd> &mdash; wyświetla listę rejestrów. Na liście mogą pojawić się również
-			<a href="https://en.wikipedia.org/wiki/ANSI_escape_code#Description" target="_blank">ANSI escape sequences</a>.
+			<kbd>:reg</kbd> &mdash; podgląd rejestrów, wychodzimy ENTER'em. Na liście mogą pojawić się również
+			<a href="https://en.wikipedia.org/wiki/ANSI_escape_code#Description" target="_blank">ANSI&nbsp;escape&nbsp;sequences</a>.
 		</p>
 		<p>
-			
+			<kbd>:reg 2</kbd> &mdash; podgląd tylko rejestru np. drugiego.
+		</p>
+		<p>
+			<kbd>"syw</kbd> &mdash; skopiuj słowo do rejestru <em>s</em>.
+		</p>
+		<p>
+			<kbd>"0yl</kbd> &mdash; skopiuj znak pod kursorem do rejestru <em>0</em>.
+		</p>
+		<p>
+			<kbd>"add</kbd> &mdash; usuń całą linię i umieść ją w rejestrze <em>a</em>. 
+		</p>
+		<p>
+			<kbd>"ap</kbd> &mdash; wklej zawartość rejestru <em>a</em>.
+		</p>
+		<p>
+			<kbd>"2SHIFT-p</kbd> &mdash; wklej zawartość rejestru <em>2</em> przed kursorem (lub powyżej aktualnej linii).
+		</p>
+		<p>
+			<kbd>"ay$</kbd> &mdash; nadpisz rejestr <em>a</em> kopiowanym tekstem od pozycji kursora do końca linii.<br>
+			<kbd>"Ayb</kbd> &mdash; dodaj do już istniejącej zawartości w rejestrze <em>a</em> nowe kopiowane słowo przed kursorem.
+		</p>
+		<h2 style="clear: left;">5.3. Ćwiczenie praktyczne 04 - Kopiowanie tekstu</h2>
+		<ol>
+			Otwieranie pliku:
+			<li><kbd>vim sshd_config_sample.txt</kbd> # open a sample file</li>
+			Kopiowanie linii:
+			<li><kbd>3j</kbd> # move to the third line</li>
+			<li><kbd>yy</kbd> # copy the line</li>
+			<li><kbd>p</kbd> # paste the line below</li>
+			<li><kbd>x</kbd> # delete the # char</li>
+			<li><kbd>$</kbd> # move to the end of the line</li>
+			<li><kbd>xx</kbd> # delete two characters at the end of line</li>
+			<li><kbd>i</kbd> # enter into the insert mode</li>
+			<li><kbd>yes</kbd> # type given word</li>
+			<li><kbd>ESC</kbd> # leave the insert mode</li>
+			Wycinanie linii:
+			<li><kbd>dd</kbd> # cut the current line</li>
+			<li><kbd>k</kbd> # move back to the previus line</li>
+			<li><kbd>SHIFT-p</kbd> # paste a default register above the current line</li>
+		</ol>
+	<h1>6. Dodawaj i łącz tekst</h1>
+		<h2>6.1. Dodawanie, podmienianie i łączenie tekstu - koncepcje</h2>
+		<img style="width: 50%; float: left; margin-right: 20px; margin-bottom: 30px;" src="media/text_operation.png" alt="Działania na tekście.">
+		<p>
+			<kbd></kbd>
 		</p>
 </body>
 </html>
