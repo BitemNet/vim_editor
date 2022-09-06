@@ -317,7 +317,48 @@
 		<h2>6.1. Dodawanie, podmienianie i łączenie tekstu - koncepcje</h2>
 		<img style="width: 50%; float: left; margin-right: 20px; margin-bottom: 30px;" src="media/text_operation.png" alt="Działania na tekście.">
 		<p>
-			<kbd></kbd>
+			<kbd>i</kbd> &mdash; wprowadź tekst <u>przed</u> kursorem.<br>
+			<kbd>a</kbd> &mdash; wprowadź tekst <u>za</u> kursorem.
+		</p>
+		<p>
+			<kbd>SHITF-i</kbd> &mdash; wprowadź tekst <u>przed</u> pierwszym słowem linii.<br>
+			<kbd>SHITF-a</kbd> &mdash; wprowadź tekst <u>za</u> ostatnim znakime linii.
+		</p>
+		<p>
+			<kbd>o</kbd> &mdash; wprowadź linię <u>poniżej</u> aktualnej linii.<br>
+			<kbd>SHIFT-o</kbd> &mdash; wprowadź linię <u>powyżej</u> aktualnej linii.
+		</p>
+		<p>
+			<strong>&lt;licznik&gt;operator</strong> &mdash; koncepcja powielania wprowadzanego tekstu:<br>
+			<em>licznik</em> &ndash; ile razy powielić,<br>
+			<em>operator</em> &ndash; w jakim trybie: [SHIFT]- i, a, o &mdash; wstaw tekst za i przed kursorem (SHIFT: tekstem w linii),
+			wstaw linię poniżej (SHIFT: powyżej) aktualnej linii. Akcja wykona się po wyjściu z trybu <em>insert</em> klawiszem <kbd>ESC</kbd>. Np.:<br>
+			<kbd>20i#ESC</kbd> &mdash; komentarz rozdzielający.<br>
+			<kbd>5o#ESC</kbd> &mdash; 5 linii ze znakiem #.
+		</p>
+		<p>
+			<kbd>rx</kbd> &mdash; podmiana znaku pod kursorem na znak <em>x</em>
+		</p>
+		<p>
+			<kbd>SHIFT-r</kbd> &mdash; tryb <strong>Replace Mode</strong> podmienia kolejne znaki aż do naciśnięcia klawisza <kbd>ECS</kbd>.
+		</p>
+		<p>
+			<kbd>c</kbd> &mdash; <strong>Change Mode</strong> tryb podmiany słów, znaków, linii. Np.:<br>
+			<kbd>cw</kbd> &mdash; wycina słowo i wchodzi w tryb <em>insert</em><br>
+			<kbd>3cb</kbd> &mdash; wycina 3 słowa przed kursorem i wchodzi w tryb <em>insert</em><br>
+			<kbd>4ch</kbd> &mdash; wycina 4 znaki przed kursorem i wchodzi w tryb <em>insert</em><br>
+			<kbd>c0</kbd> &mdash; wycina wszystko od początku linii do kursora i wchodzi w trybm <em>insert</em><br>
+			<kbd>c$</kbd> &mdash; wycina wszystko od kursora do końca linii i wchodzi w trybm <em>insert</em><br>
+		</p>
+		<p>
+			<kbd>~</kbd> &mdash; zmienia znak pod kursorem z dużych na małe lub na odwrót.
+		</p>
+		<p>
+			<kbd>g~~</kbd> &mdash; swapcase od kursora do końca linii.
+		</p>
+		<p>
+			<kbd>guu</kbd> &mdash; zmiana na małe litery od kursora do końca linii.<br>
+			<kbd>gSHIFT-uSHIFT-u</kbd> &mdash; zmiana na duże litery od kursora do końca linii.
 		</p>
 </body>
 </html>
