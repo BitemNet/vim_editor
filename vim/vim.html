@@ -357,8 +357,95 @@
 			<kbd>g~~</kbd> &mdash; swapcase od kursora do końca linii.
 		</p>
 		<p>
-			<kbd>guu</kbd> &mdash; zmiana na małe litery od kursora do końca linii.<br>
-			<kbd>gSHIFT-uSHIFT-u</kbd> &mdash; zmiana na duże litery od kursora do końca linii.
+			<kbd>guu</kbd> &mdash; zmiana na małe litery całej linii.<br>
+			<kbd>gSHIFT-uSHIFT-u</kbd> &mdash; zmiana na duże litery całej linii.
+		</p>
+		<p>
+			<kbd>gwu</kbd> &mdash; zmiana na małe litery słowa za kursorem.<br>
+			<kbd>gwSHIFT-u</kbd> &mdash; zmiana na duże litery słowa za kursorem.<br>
+		</p>
+		<p>
+			<kbd>SHIFT-j</kbd> &mdash; łączenie linii aktualnej z linią poniżej.
+		</p>
+		<h2 style="clear: left;">5.3. Ćwiczenie praktyczne 04 - Kopiowanie tekstu</h2>
+		<ol>
+			Otwieranie pliku:
+			<li><kbd>vim sshd_config_sample.txt</kbd> # open a sample file</li>
+			Dodawanie wielokrotne linii:
+			<li><kbd>3SHIFT-o#ESC</kbd> # add 3 #'s lines above current line</li>
+			<li><kbd>:2</kbd> # move to second line</li>
+			<li><kbd>SHIFT-a</kbd> # enter to append mode at the end of the line</li>
+			<li><kbd>abcESC</kbd> # add text and exit to command mode</li>
+			<li><kbd>0</kbd> # move to the beginning of the line</li>
+			<li><kbd>w</kbd> # move to the word</li>
+			<li><kbd>cw</kbd> # enter into the change mode</li>
+			<li><kbd>xyz</kbd> # type given word</li>
+			<li><kbd>ESC</kbd> # leave the insert mode</li>
+			<li><kbd>k</kbd> # move back to the previus line</li>
+			<li><kbd>40i#ESC</kbd> # enter 40 #'s</li>
+			<li><kbd>j</kbd> # move forward to the next line</li>
+			<li><kbd>40i#ESC</kbd> # enter 40 #'s</li>
+			Powiększenie tekstu:
+			<li><kbd>gUU</kbd> # uppercase the whole line</li>
+		</ol>
+	<h1>7. Wyszukuj i podmieniaj sprawnie ciągi znakowe w Edytorze Vim!</h1>
+		<h2>7.1. Przegląd metod wyszukiwania i podmieniania wyszukanego tekstu</h2>
+		<img style="width: 50%; float: left; margin-right: 20px; margin-bottom: 30px;"
+			src="media/search.png" alt="Wyszukiwanie i podmienianie tekstu." height="400">
+		<h3>Wyszukiwanie tekstu</h3>
+		<p>
+			<kbd>f{znak}</kbd> &mdash; wyszukaj do przodu znak w linii i ustaw <u>na nim</u> kursor<br>
+			<kbd>F{znak}</kbd> &mdash; wyszukaj wstecz znak w linii i ustaw <u>na nim</u> kursor.
+		</p>
+		<p>
+			<kbd>t{znak}</kbd> &mdash; wyszukaj do przodu znak w linii i ustaw <u>przed nim </u> kursor<br>
+			<kbd>T{znak}</kbd> &mdash; wyszukaj wstecz znak w linii i ustaw <u>przed nim</u> kursor.
+		</p>
+		<p>
+			<kbd>;</kbd> &mdash; przejdź do kolejnego wyniku wyszukiwania w linii<br>
+			<kbd>,</kbd> &mdash; przejdź do poprzedniego wyniku wyszukiwania w linii.<br>
+			<strong>UWAGA</strong>: <kbd>t</kbd>/<kbd>T</kbd> odwraca tę zależność, ponadto kursor dla pierwszego (lub ostatniego)
+			znalezionego w linii ustawia się przed (lub za) znakiem.
+		</p>
+		<p>
+			Będąc w trybie <em>command mode</em>:<br>
+			<kbd>/{tekst}</kbd> &mdash; wyszukaj do przodu tekst w całym dokumencie<br>
+			<kbd>?{tekst}</kbd> &mdash; wyszukaj wstecz tekst w całym dokumencie.
+		</p>
+		<p>
+			<kbd>n</kbd> &mdash; przejdź do kolejnego wyniku wyszukiwania w całym dokumencie<br>
+			<kbd>N</kbd> &mdash; przejdź do poprzedniego wyniku wyszukiwania w całym dokumencie.<br>
+			<strong>UWAGA</strong>: <kbd>?</kbd> odwraca tę zależność.
+		</p>
+		<p>
+			<kbd>*</kbd> &mdash; wyszukaj do przodu słowo na którym aktualnie znajduje się kursor<br>
+			<kbd>#</kbd> &mdash; wyszukaj wstecz słowo na którym aktualnie znajduje się kursor.
+		</p>
+		<h3 style="clear: left;">Podmienianie tekstu</h3>
+		<p>
+			<kbd>:s/stary text/nowy text</kbd> &mdash; wyszukaj w przód pierwsze wystąpienie <em>starego tekstu</em> i zamień na <em>nowy tekst</em>.<br>
+		</p>
+		<p>
+			<kbd>:s/abc/xyz/g</kbd> &mdash; wyszukaj w <u>linii</u> wszystkie wystąpienia <em>abc</em> i zamień na <em>xyz</em>.<br>
+		</p>
+		<p>
+			<kbd>:%s/abc/xyz</kbd> &mdash; wyszukaj w <u>całym pliku</u> wszystkie <b>pierwsze</b> wystąpienia
+			w linii <em>abc</em> i zamień na <em>xyz</em>.<br>
+		</p>
+		<p>
+			<kbd>:%s/abc/xyz/g</kbd> &mdash; wyszukaj w <u>całym pliku</u> wszystkie wystąpienia <em>abc</em> i zamień na <em>xyz</em>.<br>
+		</p>
+		<p>
+			<kbd>:5s/abc/xyz</kbd> &mdash; wyszukaj w <u>5 linii</u> pierwsze wystąpienie <em>abc</em> i zamień na <em>xyz</em>.<br>
+		</p>
+		<p>
+			<kbd>:5s/abc/xyz/g</kbd> &mdash; wyszukaj w <u>5 linii</u> wszystkie wystąpienia <em>abc</em> i zamień na <em>xyz</em>.<br>
+		</p>
+		<p>
+			<kbd>:5,10s/abc/xyz</kbd> &mdash; wyszukaj w <u>liniach od 5 do 10</u> pierwsze wystąpienie <em>abc</em> i zamień na <em>xyz</em>.<br>
+		</p>
+		<p>
+			<kbd>:5,10s/abc/xyz/g</kbd> &mdash; wyszukaj w <u>liniach od 5 do 10</u> wszystkie wystąpienia <em>abc</em> i zamień na <em>xyz</em>.<br>
 		</p>
 </body>
 </html>
